@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0C0A14;
+  --background-surface: #161425;
+  --background-card: #1E1B2E;
+  --background-elevated: #2D2847;
+  --foreground: #F2EDE4;
+  --foreground-muted: #9A9498;
+  --foreground-dim: #5C5860;
+  --accent-amber: #E8A84C;
+  --accent-amber-dim: rgba(232, 168, 76, 0.15);
+  --accent-peach: #D4896A;
+  --accent-lavender: #8B7EC8;
+  --accent-mint: #7EBBA2;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --glow-amber: rgba(232, 168, 76, 0.3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--background-surface);
+  --color-card: var(--background-card);
+  --color-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--foreground-muted);
+  --color-dim: var(--foreground-dim);
+  --color-amber: var(--accent-amber);
+  --color-amber-dim: var(--accent-amber-dim);
+  --color-peach: var(--accent-peach);
+  --color-lavender: var(--accent-lavender);
+  --color-mint: var(--accent-mint);
+  --color-border: var(--border-subtle);
+  --color-border-medium: var(--border-medium);
+  --color-glow: var(--glow-amber);
+  --font-sans: var(--font-drift-sans);
+  --font-mono: var(--font-drift-mono);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 999px;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--glow-amber); }
+  50% { box-shadow: 0 0 40px var(--glow-amber), 0 0 60px rgba(232, 168, 76, 0.15); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
